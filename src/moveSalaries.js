@@ -17,7 +17,6 @@ glob("C:/Users/JamieLaptop/Downloads/FanDuel-MLB*.csv", function (er, files) {
   moveFiles();
 });
 
-
 var moveFiles = function moveFiles(){
   salaryFiles.forEach(function(file, index){
     var newLocation = salariesDirectory + finalFileNames[index];
