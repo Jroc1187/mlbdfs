@@ -61,6 +61,7 @@ var startingLineupString = '';
 var cli = commandLineArgs([
   { name: 'site', alias: 's', type: String },
   { name: 'pitchers', type: String, multiple: true, },
+  { name: 'teams', type: String, multiple: true, },
 ])
 
 var options = cli.parse();
@@ -230,7 +231,7 @@ var done = function() {
       table.push([player.name, player[differenceSite], player.percentage, player.dksalary, player.fdsalary, player.yhsalary, player.fdsalarydifference, player.yhsalarydifference, player.position]);
     }
 
-    if(player[differenceSite] <= -500 && player.yhsalary > 2000){
+    if(player[differenceSite] <= -200 && options.teams.indexOf(player.team) > -1){
       for(var position in lineupPlayers){
         if(player.position.indexOf(position) > -1){
           lineupPlayers[position].push(player);
@@ -272,4 +273,5 @@ var done = function() {
   console.log(positionalSalaryTable.toString());
   console.log(table.toString());
   console.log(generatedLineupsTable.toString());
+  console.log("TOTAL LINEUPS GENERATED:  " + lineups.length);
 }
